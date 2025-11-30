@@ -1,45 +1,71 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity Web Player | BasketballGame</title>
-  </head>
-  <body style="text-align: center; padding: 0; border: 0; margin: 0;">
-    <canvas id="unity-canvas" width=800 height=1600 tabindex="-1" style="width: 400px; height: 800px; background: url('Build/v1.jpg') center / cover"></canvas>
-    <script src="Build/v1.loader.js"></script>
-    <script>
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        // Mobile device style: fill the whole browser client area with the game canvas:
-        var meta = document.createElement('meta');
-        meta.name = 'viewport';
-        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-        document.getElementsByTagName('head')[0].appendChild(meta);
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        var canvas = document.querySelector("#unity-canvas");
-        canvas.style.width = "100%";
-        canvas.style.height = "100%";
-        canvas.style.position = "fixed";
+        <title>LeffIT| BasketballGame</title>
 
-        document.body.style.textAlign = "left";
+        <style>
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                background: #494747;
+            }
 
-      }
+            #unity-container {
+                margin: 0 auto;
+                max-width: 400px;
+            }
 
-      createUnityInstance(document.querySelector("#unity-canvas"), {
-        arguments: [],
-        dataUrl: "Build/v1.data",
-        frameworkUrl: "Build/v1.framework.js",
-        codeUrl: "Build/v1.wasm",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "LeffIt",
-        productName: "BasketballGame",
-        productVersion: "0.1.0",
-        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
-        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
-      }).then((unityInstance) => {
-      }).catch((message) => {
-        alert(message);
-      });
-    </script>
-  </body>
+            #unity-canvas {
+                width: 100%;
+                aspect-ratio: 1 / 2;
+                height: auto;
+                display: block;
+                background: url('Build/v4.jpg') center/cover;
+            }
+
+            @media (max-width: 768px) {
+                #unity-container {
+                    max-width: 100vw;
+                    width: 100vw;
+                }
+
+                #unity-canvas {
+                    width: 100vw;
+                    height: calc(100vw * 2);
+                    aspect-ratio: unset;
+                }
+            }
+        </style>
+    </head>
+
+    <body style="text-align: center; padding: 0; border: 0; margin: 0">
+        <div id="unity-container">
+            <canvas id="unity-canvas"></canvas>
+        </div>
+
+        <script src="Build/v4.loader.js"></script>
+        <script>
+            createUnityInstance(document.querySelector('#unity-canvas'), {
+                arguments: [],
+                dataUrl: 'Build/v4.data',
+                frameworkUrl: 'Build/v4.framework.js',
+                codeUrl: 'Build/v4.wasm',
+                streamingAssetsUrl: 'StreamingAssets',
+                companyName: 'LeffIt',
+                productName: 'BasketballGame',
+                productVersion: '0.2',
+                matchWebGLToCanvasSize: true, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+                devicePixelRatio: 2, // Uncomment this to override low DPI rendering on high DPI displays.
+            })
+                .then(unityInstance => {})
+                .catch(message => {
+                    alert(message);
+                });
+        </script>
+    </body>
 </html>
