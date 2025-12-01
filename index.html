@@ -40,18 +40,18 @@
     <body style="text-align: center; padding: 0; border: 0; margin: 0">
         <div id="game-container">
             <div id="unity-container" class="text-center">
-                <canvas class="unity-on-page" id="unity-canvas" width="400" height="800" tabindex="-1" style="width: 400px; height: 800px; background: url('Build/v4.jpg') center/cover"></canvas>
+                <canvas class="unity-on-page" id="unity-canvas" width="400" height="800" tabindex="-1" style="width: 400px; height: 800px; background: url('Build/v.0.3.jpg') center/cover"></canvas>
             </div>
         </div>
 
-        <script src="Build/v4.loader.js"></script>
+        <script src="Build/v.0.3.loader.js"></script>
 
         <script>
             createUnityInstance(document.querySelector('#unity-canvas'), {
                 arguments: [],
-                dataUrl: 'Build/v4.data',
-                frameworkUrl: 'Build/v4.framework.js',
-                codeUrl: 'Build/v4.wasm',
+                dataUrl: 'Build/v.0.3.data',
+                frameworkUrl: 'Build/v.0.3.framework.js',
+                codeUrl: 'Build/v.0.3.wasm',
                 streamingAssetsUrl: 'StreamingAssets',
                 companyName: 'LeffIt',
                 productName: 'BasketballGame',
